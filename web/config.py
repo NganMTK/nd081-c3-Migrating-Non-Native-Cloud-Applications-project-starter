@@ -11,9 +11,9 @@ class BaseConfig:
     DB_URL = 'postgresql://{user}:{pw}@{url}/{db}'.format(user=POSTGRES_USER,pw=POSTGRES_PW,url=POSTGRES_URL,db=POSTGRES_DB)
     SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI') or DB_URL
     CONFERENCE_ID = 1
-    SECRET_KEY = ''
-    SERVICE_BUS_CONNECTION_STRING ='' #TODO: Update value
-    SERVICE_BUS_QUEUE_NAME ='notificationqueue'
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'secret-key'
+    SERVICE_BUS_CONNECTION_STRING = os.getenv('SERVICEBUS_CONNECTION_STRING') #TODO: Update value
+    SERVICE_BUS_QUEUE_NAME ='notiqueue'
     ADMIN_EMAIL_ADDRESS: 'info@techconf.com'
     SENDGRID_API_KEY = '' #Configuration not required, required SendGrid Account
 
